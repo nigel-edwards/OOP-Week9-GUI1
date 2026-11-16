@@ -5,12 +5,69 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.oopweek9gui1.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import javafx.scene.layout.HBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.oopweek9gui1.HelloController">
+    <center>
+        <GridPane alignment="CENTER" xmlns:fx="http://javafx.com/fxml" hgap="10" vgap="10">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Name" />
+            <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="Student ID" />
+            <TextField fx:id="sidField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date of Birth" />
+            <DatePicker fx:id="dobField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="0" text="Country" />
+            <ComboBox fx:id="countryField" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Germany"/>
+                        <String fx:value="UK"/>
+                        <String fx:value="Portugal"/>
+                        <String fx:value="Romainia"/>
+                        <String fx:value="Bulgaria"/>
+                        <String fx:value="Sweden"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <TitledPane text="Courses" collapsible="false" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                <content>
+                    <GridPane hgap="10" vgap="10">
+                        <CheckBox fx:id="chk_java" text="Java" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="chk_c" text="C" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="chk_python" text="Python" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="chk_network" text="Network" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="chk_security" text="Security" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <CheckBox fx:id="chk_database" text="Database" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <CheckBox fx:id="chk_ai" text="AI" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" alignment="BOTTOM_RIGHT" >
+            <padding><Insets bottom="10" right="10"/></padding>
+            <Button text="OK" onAction="#onOK" />
+            <Button text="Exit" onAction="#onExit"/>
+        </HBox>
+    </bottom>
+</BorderPane>
